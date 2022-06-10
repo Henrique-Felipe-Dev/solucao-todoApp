@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.generation.todoandroid.api.Repository
 import com.generation.todoandroid.model.Categoria
+import com.generation.todoandroid.model.Tarefa
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -35,6 +36,16 @@ class MainViewModel @Inject constructor(
             try {
                 val response = repository.listCategoria()
                 _myCategoriaResponse.value = response
+            }catch (e: Exception){
+                Log.d("Erro", e.message.toString())
+            }
+        }
+    }
+
+    fun addTarefa(tarefa: Tarefa){
+        viewModelScope.launch {
+            try {
+                repository.addTarefa(tarefa)
             }catch (e: Exception){
                 Log.d("Erro", e.message.toString())
             }
