@@ -20,43 +20,14 @@ class ListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        
-        binding = FragmentListBinding.inflate(layoutInflater, container, false)
 
-        val listTarefa = listOf(
-            Tarefa(
-                "Lavar a louça",
-                "Lavar a louça do dia todo",
-                "Henrique",
-                "2022-05-15",
-                false,
-                "Dia a Dia"
-            ),
-            Tarefa(
-                "Ir ao cinema",
-                "Assistir Sonic 2",
-                "Henrique",
-                "2022-05-18",
-                false,
-                "Lazer"
-            ),
-            Tarefa(
-                "Ir ao Parque",
-                "Visitar o parque Ibirapuera com os amigos",
-                "Henrique",
-                "2022-05-13",
-                true,
-                "Lazer"
-            )
-        )
+        binding = FragmentListBinding.inflate(layoutInflater, container, false)
 
         //Configuração do RecyclerView
         val adapter = TarefaAdapter()
         binding.recyclerTarefa.adapter = adapter
         binding.recyclerTarefa.layoutManager = LinearLayoutManager(context)
         binding.recyclerTarefa.setHasFixedSize(true)
-
-        adapter.setList(listTarefa)
 
         binding.floatingAdd.setOnClickListener {
             findNavController().navigate(R.id.action_listFragment_to_formFragment)
