@@ -23,4 +23,9 @@ interface ApiService {
         @Body tarefa: Tarefa
     ): Response<Tarefa>
 
+    @DELETE("tarefa/{id}")
+    suspend fun deleteTarefa(
+        @Path("id") id: Long
+    ): Response<Tarefa>
+
 }
