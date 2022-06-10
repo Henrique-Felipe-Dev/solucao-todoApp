@@ -36,6 +36,12 @@ class TarefaAdapter (
             taskClickListener.onTaskClickListener(tarefa)
         }
 
+        holder.binding.switchAtivo
+            .setOnCheckedChangeListener { compoundButton, ativo ->
+                tarefa.status = ativo
+                mainViewModel.updateTarefa(tarefa)
+            }
+
     }
 
     override fun getItemCount(): Int {
